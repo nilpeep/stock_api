@@ -1,6 +1,6 @@
 "use strict";
 
-//TODO: Created a user model according to ERD
+//* Created a user model according to ERD
 
 // DATA SAMPLE: [
 //     {
@@ -36,6 +36,8 @@
 // ]
 
 const { mongoose } = require("../configs/dbConnection");
+
+//? User Model:
 
 const userSchema = new mongoose.Schema(
   {
