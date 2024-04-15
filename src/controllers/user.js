@@ -136,7 +136,7 @@ module.exports = {
 
         // user can delete only his own infos
 
-        // isAdmin check is not neccesary here because we already checking in permission
+        // isAdmin check is not neccesary here because we already checking in permissions.isAdmin
         // const customFilters = req.user?.isAdmin ? {_id: req.params.id} : {_id: req.user._id}
 
         if(req.params.id != req.user._id){
