@@ -1,6 +1,7 @@
 "use strict"
 
 const router = require('express').Router()
+
 // routes/token:
 
 const { isAdmin } = require('../middlewares/permissions')
@@ -19,3 +20,5 @@ router.route('/:id')
     .put(token.update)
     .patch(token.update)
     .delete(token.delete)
+
+module.exports = router
