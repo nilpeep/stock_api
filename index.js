@@ -23,7 +23,6 @@ require('express-async-errors')
 const { dbConnection } = require('./src/configs/dbConnection')
 dbConnection()
 
-/* ------------------------------------------------------- */
 // Middlewares:
 
 // Accept JSON:
@@ -41,7 +40,6 @@ app.use(require('./src/middlewares/logger'))
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
-/* ------------------------------------------------------- */
 // Routes:
 
 // HomePath:
@@ -61,7 +59,6 @@ app.all('/', (req, res) => {
 // Routes:
 app.use(require('./src/routes'))
 
-/* ------------------------------------------------------- */
 
 // errorHandler:
 app.use(require('./src/middlewares/errorHandler'))

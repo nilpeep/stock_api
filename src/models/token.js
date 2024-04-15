@@ -2,15 +2,13 @@
 
 const { mongoose } = require('../configs/dbConnection')
 
-// Token Model:
 
-const { mongoose } = require('../configs/dbConnection')
-/* ------------------------------------------------------- *
+/*
 {
   "userId": "65343222b67e9681f937f001",
   "token": "...tokenKey..."
 }
-/* ------------------------------------------------------- */
+*/
 // Token Model:
 
 const TokenSchema = new mongoose.Schema({
