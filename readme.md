@@ -1,5 +1,8 @@
 # STOCK MANAGEMENT API
 
+# Project description:
+
+
 ### ERD:
 
 ![ERD](./erdStockAPI.png)
