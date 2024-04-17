@@ -22,8 +22,8 @@ router.use('/brands', require('./brand'))
 router.use('/categories', require('./category'))
 // firm:
 router.use('/firms', require('./firm'))
-// // product:
-// router.use('/products', require('./product'))
+// product:
+router.use('/products', require('./product'))
 // // purchase:
 // router.use('/purchases', require('./purchase'))
 // // sale:
