@@ -101,12 +101,13 @@ userSchema.pre("save", function (next){
       console.log('email is ok')
       
       if(data?.password){
-        const isPasswordValidated = data.password ? /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(data.password) : true
+        const isPasswordValidated = data.password ? /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(data.password) : true
         
         if(isPasswordValidated){
           this.password = passwordEncrypt(this.password)
+          next()
         }else{
-          next(new Error('password is not valid'))
+          // next(new Error('password is not valid'))
         }
       }
 
