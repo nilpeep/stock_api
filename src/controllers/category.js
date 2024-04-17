@@ -42,12 +42,24 @@ module.exports = {
             #swagger.summary = "Get Single Category"
         */
 
-    const data = await Category.findOne({ _id: req.params.id });
+    console.log('read calisti')
 
-    res.status(200).send({
-      error: false,
-      data,
-    });
+    if (req.params?.id) {
+      const data = await Category.findOne({ _id: req.params.id });
+
+      res.status(200).send({
+        error: false,
+        data,
+      });
+    } else {
+      const data = await res.getModelList(Category);
+
+      res.status(200).send({
+        error: false,
+        details: await res.getModelListDetails(Category),
+        data,
+      });
+    }
   },
   update: async (req, res) => {
     /*
@@ -78,11 +90,11 @@ module.exports = {
             #swagger.summary = "Delete Category"
         */
 
-        const data = await Category.deleteOne({ _id: req.params.id })
+    const data = await Category.deleteOne({ _id: req.params.id });
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
   },
 };
