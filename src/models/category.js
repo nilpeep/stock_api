@@ -11,6 +11,7 @@ const CategorySchema = new mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
+      set: (name) => name.toUpperCase()
     },
   },
   {
