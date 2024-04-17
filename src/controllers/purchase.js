@@ -35,6 +35,13 @@ module.exports = {
     });
   },
   create: async (req, res) => {
+
+    //? get userId info from req.user
+
+    req.body.userId = req.user._id
+
+    console.log(req.user)
+
     const data = await Purchase.create(req.body);
 
     res.status(201).send({
