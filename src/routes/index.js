@@ -26,8 +26,8 @@ router.use('/firms', require('./firm'))
 router.use('/products', require('./product'))
 // purchase:
 router.use('/purchases', require('./purchase'))
-// // sale:
-// router.use('/sales', require('./sale'))
+// sale:
+router.use('/sales', require('./sale'))
 
 // document:
 router.use('/documents', require('./document'))
