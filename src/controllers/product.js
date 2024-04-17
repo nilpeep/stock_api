@@ -20,7 +20,7 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Product);
+    const data = await res.getModelList(Product,{}, ['categoryId','brandId']);
 
     res.status(200).send({
       error: false,
@@ -45,14 +45,14 @@ module.exports = {
     console.log('read calisti')
 
     if (req.params?.id) {
-      const data = await Product.findOne({ _id: req.params.id });
+      const data = await Product.findOne({ _id: req.params.id }.populate(['categoryId','brandId']));
 
       res.status(200).send({
         error: false,
         data,
       });
     } else {
-      const data = await res.getModelList(Product);
+      const data = await res.getModelList(Product, {}, ['categoryId','brandId']);
 
       res.status(200).send({
         error: false,

@@ -20,7 +20,11 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Sale);
+    const data = await res.getModelList(Sale,{},[
+      {path:'userId', select:'username email'},
+      'brandId',
+      {path:'productId', select:'name',populate:{path:'categoryId'}}
+    ]);
 
     res.status(200).send({
       error: false,
@@ -45,14 +49,22 @@ module.exports = {
     console.log('read calisti')
 
     if (req.params?.id) {
-      const data = await Sale.findOne({ _id: req.params.id });
+      const data = await Sale.findOne({ _id: req.params.id }).populate([
+        {path:'userId', select:'username email'},
+        'brandId',
+        {path:'productId', select:'name',populate:{path:'categoryId'}}
+      ]);
 
       res.status(200).send({
         error: false,
         data,
       });
     } else {
-      const data = await res.getModelList(Sale);
+      const data = await res.getModelList(Sale,{},[
+        {path:'userId', select:'username email'},
+        'brandId',
+        {path:'productId', select:'name',populate:{path:'categoryId'}}
+      ]);
 
       res.status(200).send({
         error: false,

@@ -3,6 +3,7 @@
 // Purchase controller:
 
 const Purchase = require("../models/purchase");
+const { populate } = require("../models/user");
 
 module.exports = {
   list: async (req, res) => {
@@ -20,7 +21,12 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Purchase);
+    const data = await res.getModelList(Purchase, {}, [
+      {path:'userId', select:'username email'},
+      {path:'firmId', select:'name image'},
+      'brandId',
+      {path:'productId', select:'name',populate:{path:'categoryId'}}
+    ]);
 
     res.status(200).send({
       error: false,
@@ -45,14 +51,24 @@ module.exports = {
     console.log('read calisti')
 
     if (req.params?.id) {
-      const data = await Purchase.findOne({ _id: req.params.id });
+      const data = await Purchase.findOne({ _id: req.params.id }.populate([
+        {path:'userId', select:'username email'},
+        {path:'firmId', select:'name image'},
+        'brandId',
+        {path:'productId', select:'name',populate:{path:'categoryId'}}
+      ]));
 
       res.status(200).send({
         error: false,
         data,
       });
     } else {
-      const data = await res.getModelList(Purchase);
+      const data = await res.getModelList(Purchase, {}, [
+        {path:'userId', select:'username email'},
+        {path:'firmId', select:'name image'},
+        'brandId',
+        {path:'productId', select:'name', populate:{path:'categoryId'}}
+      ]);
 
       res.status(200).send({
         error: false,
