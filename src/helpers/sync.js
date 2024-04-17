@@ -50,6 +50,25 @@ module.exports = async function () {
         "isStaff": false,
         "isAdmin": false
     })
+    
+    const Category = require('../models/category')
+    await Category.deleteMany() // !!! Clear collection.
+    await Category.create({
+        "_id": "65343222b67e9681f937f201",
+        "name": "Food",
+    })
+    await Category.create({
+        "_id": "65343222b67e9681f937f202",
+        "name": "Drink",
+    })
+    await Category.create({
+        "_id": "65343222b67e9681f937f203",
+        "name": "Jewelery",
+    })
+    await Category.create({
+        "_id": "65343222b67e9681f937f204",
+        "name": "Electronic",
+    })
 
     /* Brand *
     const Brand = require('../models/brand')
